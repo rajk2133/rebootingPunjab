@@ -90,7 +90,7 @@ export default function Register() {
         <TextField
           label="Age"
           name="age"
-          type="text"
+          type="number"
           autoComplete="family-name"
           value={formData.age}
           onChange={handleChange}
