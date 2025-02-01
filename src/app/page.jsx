@@ -27,7 +27,6 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
     try {
       console.log(formData,"data dikhayo")
       const response = await axios.post('http://localhost:8080/incubation/data', formData)
