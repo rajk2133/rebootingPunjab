@@ -8,6 +8,8 @@ import Image from 'next/image'
 import { useState } from 'react'
 import axios from 'axios'
 import backgroundImage from '@/images/mappunjab.png'
+import gif from '@/images/avatars/male.gif'
+// import gif2 from '@/images/avatars/female.gif'
 import { toast,ToastContainer } from 'react-toastify'
 
 export default function Register() {
@@ -29,17 +31,39 @@ export default function Register() {
     e.preventDefault()
     try {
       console.log(formData, "data dikhayo")
-      const response = await axios.post('https://cms.keewesolutions.com/incubation/data', formData)
+      const response = await axios.post('http://localhost:8080/incubation/data', formData)
       console.log(response)
       if (response.status === 200) {
-        toast.success('Registration successful!')
+        if (formData.gender === "Male") {
+          toast.success(
+            <div>
+              <p>Registration successful! 🎉</p>
+              <Image src={gif} alt="Success" className="w-full h-full" />
+            </div>,
+            { position: "top-center", autoClose: 5000 }
+          );
+        }
+        else if(formData.gender=='Female'){
+          toast.success(
+            <div>
+              <p>Registration successful! 🎉</p>
+              <Image src={gif} alt="Success" className="w-full h-full" />
+            </div>,
+            { position: "top-center", autoClose: 5000 }
+          );
+        }
       }
-      else if (response.status == 400) {
-        toast.success('User already Registered')
+      else if (response.data=='Email already exists!') {
+        toast.warning('User already Registered')
       }
     } catch (error) {
-      console.error('Error registering:', error)
-      toast.error('Something went wrong!')
+      if (error.response && error.response.status === 400) {
+        toast.warning('User already Registered', { position: "top-center", autoClose: 5000 });
+      }
+      else {
+        console.error('Error registering:', error);
+        toast.error('Something went wrong!', { position: "top-center", autoClose: 5000 });
+      }
     }
   }
   return (
@@ -137,7 +161,7 @@ export default function Register() {
           />
 
           <div className="col-span-full mt-4">
-            <Button type="submit" className="w-full bg-[#da8b57]">
+            <Button type="submit" className="w-full bg-[#da8b57] cursor-pointer">
               <span className='text-white'>
                 Submit <span aria-hidden="true">&rarr;</span>
               </span>
