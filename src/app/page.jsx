@@ -29,7 +29,7 @@ export default function Register() {
     e.preventDefault()
     try {
       console.log(formData, "data dikhayo")
-      const response = await axios.post('http://localhost:8080/incubation/data', formData)
+      const response = await axios.post('https://cms.keewesolutions.com/incubation/data', formData)
       console.log(response)
       if (response.status === 200) {
         toast.success('Registration successful!')
