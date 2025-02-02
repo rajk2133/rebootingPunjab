@@ -112,6 +112,7 @@ export default function Register() {
             label="Mobile Number"
             name="mobile"
             type="number"
+            inputMode="numeric"
             autoComplete="mobile"
             value={formData.mobile}
             onChange={handleChange}
@@ -121,6 +122,7 @@ export default function Register() {
             label="Age"
             name="age"
             type="number"
+            inputMode="numeric"
             autoComplete="family-name"
             value={formData.age}
             onChange={handleChange}
