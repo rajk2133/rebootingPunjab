@@ -82,6 +82,7 @@ export default function Register() {
           alt=""
           unoptimized
         />
+        <h1 className='mt-4 text-lg font-semibold text-[#e6945c]'>Register for Kaladuar</h1>
 
         <form
           onSubmit={handleSubmit}
@@ -170,6 +171,11 @@ export default function Register() {
             </Button>
           </div>
         </form>
+        <div>
+          <ul className="text-md mt-7 text-gray-600">Upcoming Events</ul>
+          <li className='text-gray-600 text-sm py-2 whitespace-nowrap'>Punjab Kala Bhawan,Chandigarh 2 February,2025</li>
+          <li className='text-gray-600 text-sm'>Girls College, Mansa 3-4-5 February,2025 </li>
+        </div>
       </SlimLayout>
     </>
   )
